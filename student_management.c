@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,13 +22,11 @@ void addStudent() {
     printf("Enter Student ID: ");
     scanf("%d", &s.id);
     printf("Enter Name: ");
-    scanf(" %[^
-]", s.name);
+    scanf(" %[^\n]", s.name);
     printf("Enter Age: ");
     scanf("%d", &s.age);
     printf("Enter Department: ");
-    scanf(" %[^
-]", s.department);
+    scanf(" %[^\n]", s.department);
 
     fwrite(&s, sizeof(s), 1, f);
     fclose(f);
@@ -99,13 +96,11 @@ void updateStudent() {
     while (fread(&s, sizeof(s), 1, f)) {
         if (s.id == updateId) {
             printf("Enter new Name: ");
-            scanf(" %[^
-]", s.name);
+            scanf(" %[^\n]", s.name);
             printf("Enter new Age: ");
             scanf("%d", &s.age);
             printf("Enter new Department: ");
-            scanf(" %[^
-]", s.department);
+            scanf(" %[^\n]", s.department);
 
             fseek(f, -sizeof(s), SEEK_CUR);
             fwrite(&s, sizeof(s), 1, f);
